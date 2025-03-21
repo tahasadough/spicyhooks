@@ -1,0 +1,29 @@
+{
+  "name": "spicyhooks",
+  "version": "0.0.6",
+  "main": "dist/index.js",
+  "module": "dist/index.esm.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsup"
+  },
+  "keywords": [
+    "react",
+    "spicy",
+    "hooks",
+    "spicyhooks"
+  ],
+  "author": "Taha Sadough",
+  "license": "MIT",
+  "description": "A collection of spicy React hooks",
+  "peerDependencies": {
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
+  },
+  "devDependencies": {
+    "tsup": "^8.4.0",
+    "typescript": "^5.8.2",
+    "@types/react": "^19.0.12",
+    "@types/react-dom": "^19.0.4"
+  }
+}
