@@ -1,6 +1,6 @@
 interface ScreenSize {
-  width: number;
-  height: number;
+  screenWidth: number;
+  screenHeight: number;
 }
 
 interface InViewElement {

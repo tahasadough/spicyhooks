@@ -28,7 +28,7 @@ const useInViewElement = ({
     return () => observer.disconnect();
   }, [options, baseOn]);
 
-  if (inViewElement) return inViewElement;
+  return inViewElement!;
 };
 
 export { useInViewElement };

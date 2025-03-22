@@ -76,14 +76,14 @@ A hook that gives you the current screen size and automatically updates when the
 import { useScreenSize } from 'spicyhooks';
 
 function MyComponent() {
-  const { width, height } = useScreenSize();
+  const { screenWidth, screenHeight } = useScreenSize();
 
   return (
     <section>
-      <p>Current screen width: {width}px</p>
-      <p>Current screen height: {height}px</p>
+      <p>Current screen width: {screenWidth}px</p>
+      <p>Current screen height: {screenHeight}px</p>
 
-      {width < 768 ? <p>Mobile view</p> : <p>Desktop view</p>}
+      {screenWidth < 768 ? <p>Mobile view</p> : <p>Desktop view</p>}
     </section>
   );
 }
