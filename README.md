@@ -17,28 +17,39 @@ bun add spicyhooks
 
 ### useInViewElement
 
-A hook that detects when an element is in the viewport using the Intersection Observer API.
+A hook that detects when an element is in the viewport.
 
 #### Usage
 
 ```tsx
 import { useInViewElement } from 'spicyhooks';
+// Other imports
 
-function MyComponent() {
+const MyComponent = () => {
   const { element, id } = useInViewElement();
 
   return (
-    <div>
-      <h1 id='section1'>Section 1</h1>
-      <div>Content for section 1...</div>
-
-      <h1 id='section2'>Section 2</h1>
-      <div>Content for section 2...</div>
-
-      <p>Currently visible section: {id}</p>
-    </div>
-  );
-}
+    <section className='space-x-6'>
+      {navbarRoutes.map((route, i) => {
+        const elementId = route.href.replace('#', '');
+        const isInView = inViewElement.id === elementId;
+        return (
+          <Link
+            key={i}
+            href={route.href}
+            className={cn(
+              'rounded-md px-2 py-1',
+              isInView && 'bg-dark',
+              'hover:bg-dark/50'
+            )}
+          >
+            {route.title}
+          </Link>
+        );
+      })}
+    </section>
+  ); // This example shows how to highlight the active navigation link based on which section is in view
+};
 ```
 
 #### Options
@@ -57,7 +68,7 @@ useInViewElement({
 
 ### useScreenSize
 
-A hook that returns the current dimensions of the viewport and updates when the window is resized.
+A hook that gives you the current screen size and automatically updates when the window is resized.
 
 #### Usage
 
@@ -68,16 +79,12 @@ function MyComponent() {
   const { width, height } = useScreenSize();
 
   return (
-    <div>
+    <section>
       <p>Current screen width: {width}px</p>
       <p>Current screen height: {height}px</p>
 
       {width < 768 ? <p>Mobile view</p> : <p>Desktop view</p>}
-    </div>
+    </section>
   );
 }
 ```
-
-## License
-
-MIT
