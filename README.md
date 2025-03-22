@@ -58,7 +58,7 @@ The `useInViewElement` hook accepts an options object with the following propert
 
 ```tsx
 useInViewElement({
-  options: { threshold: 1 }, // IntersectionObserver options
+  options: { threshold: 0.5 }, // IntersectionObserver options
   baseOn: 'id', // Attribute to select elements (default: 'id') id or class
 });
 ```

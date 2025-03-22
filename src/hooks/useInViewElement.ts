@@ -10,7 +10,7 @@ const INITIAL_VALUE: InViewElement = {
 };
 
 const useInViewElement = ({
-  options = { threshold: 0.5 },
+  options = { threshold: 0.9 },
   baseOn = 'id',
 }: InViewElementOptions = {}): InViewElement => {
   const [inViewElement, setInViewElement] =
