@@ -26,7 +26,7 @@ import { useInViewElement } from 'spicyhooks';
 // Other imports
 
 const MyComponent = () => {
-  const { element, id } = useInViewElement();
+  const inViewElement = useInViewElement();
 
   return (
     <section className='space-x-6'>

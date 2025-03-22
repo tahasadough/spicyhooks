@@ -4,26 +4,17 @@ import {
   InViewElementOptions,
 } from '../../lib/utils/common/common.interface';
 
-const INITIAL_VALUE: InViewElement = {
-  element: null,
-  id: '',
-};
-
 const useInViewElement = ({
   options = { threshold: 1 },
   baseOn = 'id',
-}: InViewElementOptions = {}): InViewElement => {
-  const [activeSection, setActiveSection] =
-    useState<InViewElement>(INITIAL_VALUE);
+}: InViewElementOptions = {}) => {
+  const [inViewElement, setInViewElement] = useState<Element | null>(null);
 
   useEffect(() => {
     const observer = new IntersectionObserver((entries) => {
       for (const entry of entries) {
         if (entry.isIntersecting) {
-          setActiveSection({
-            element: entry.target,
-            id: entry.target.id,
-          });
+          setInViewElement(entry.target);
           break; // Exit after the first intersecting entry -> just one element can be active at a time
         }
       }
@@ -37,7 +28,7 @@ const useInViewElement = ({
     return () => observer.disconnect();
   }, [options, baseOn]);
 
-  return activeSection;
+  return inViewElement;
 };
 
 export { useInViewElement };
