@@ -1,6 +1,6 @@
 {
   "name": "spicyhooks",
-  "version": "0.0.75",
+  "version": "0.0.8",
   "main": "dist/index.js",
   "module": "dist/index.esm.js",
   "types": "dist/index.d.ts",
