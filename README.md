@@ -1,4 +1,4 @@
-# spicyhooks
+# SpicyHooks
 
 A collection of spicy React hooks
 
