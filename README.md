@@ -88,3 +88,75 @@ function MyComponent() {
   );
 }
 ```
+
+### useLocalStorage
+
+A hook that provides a convenient way to store and retrieve data from localStorage with TypeScript support.
+
+#### Usage
+
+```tsx
+import { useLocalStorage } from 'spicyhooks';
+
+function MyComponent() {
+  const [theme, setTheme, removeTheme] = useLocalStorage<string>(
+    'theme',
+    'light'
+  ); // this is just an example
+
+  return (
+    <section>
+      <h2>Current theme: {theme}</h2>
+      <button onClick={() => setTheme('dark')}>Set Dark Theme</button>
+      <button onClick={() => setTheme('light')}>Set Light Theme</button>
+      <button onClick={removeTheme}>Reset Theme</button>
+    </section>
+  );
+}
+```
+
+#### Parameters
+
+The `useLocalStorage` hook accepts two parameters:
+
+```tsx
+useLocalStorage<T>(key: string, initialValue: T | null)
+```
+
+- `key`: The key under which the value will be stored in localStorage
+- `initialValue`: The initial value to use if no value exists in localStorage
+
+#### Return Value
+
+The hook returns a tuple with three elements:
+
+1. `item`: The current value (can be null)
+2. `setValue`: Function to update the stored value
+3. `removeItem`: Function to remove the item from localStorage
+
+#### Type Safety
+
+The hook is fully typed and supports generic types:
+
+```tsx
+// Example with a custom type
+interface UserPreferences {
+  theme: 'light' | 'dark';
+  fontSize: number;
+}
+
+const [preferences, setPreferences, removePreferences] =
+  useLocalStorage<UserPreferences>('preferences', {
+    theme: 'light',
+    fontSize: 16,
+  });
+```
+
+```
+
+This documentation:
+1. Explains what the hook does
+2. Shows practical usage examples
+3. Details the parameters and return values
+4. Includes type safety information
+```
