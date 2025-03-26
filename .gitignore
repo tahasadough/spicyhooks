@@ -1,2 +1,6 @@
 /dist
 /node_modules
+/src/hooks
+/exp
+/lib
+
