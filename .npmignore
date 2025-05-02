@@ -1,0 +1,16 @@
+/src
+/node_modules
+/exp
+/lib
+/.build
+/test
+/.github
+/.vscode
+/coverage
+*.log
+*.tsbuildinfo
+tsconfig.json
+tsup.config.ts
+.eslintrc*
+jest.config*
+bun.lock

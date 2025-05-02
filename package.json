@@ -1,0 +1,39 @@
+{
+  "name": "spicyhooks",
+  "version": "0.1.11",
+  "main": ".build/index.js",
+  "module": ".build/index.mjs",
+  "types": ".build/index.d.ts",
+  "scripts": {
+    "build": "tsup"
+  },
+  "keywords": [
+    "react",
+    "spicy",
+    "hooks",
+    "spicyhooks",
+    "hooks",
+    "react-hooks"
+  ],
+  "author": "Taha Sadough",
+  "license": "MIT",
+  "description": "A collection of spicy React hooks",
+  "peerDependencies": {
+    "react": ">=16.8.0",
+    "react-dom": ">=16.8.0"
+  },
+  "devDependencies": {
+    "tsup": "^8.4.0",
+    "typescript": "^5.8.2",
+    "@types/react": "^19.0.12",
+    "@types/react-dom": "^19.0.4"
+  },
+  "exports": {
+    ".": {
+      "types": "./.build/index.d.ts",
+      "import": "./.build/index.mjs",
+      "require": "./.build/index.js",
+      "default": "./.build/index.js"
+    }
+  }
+}
