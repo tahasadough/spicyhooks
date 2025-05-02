@@ -1,6 +1,6 @@
 interface ScreenSize {
-  screenWidth: number;
-  screenHeight: number;
+  width: number;
+  height: number;
 }
 
 export type { ScreenSize };

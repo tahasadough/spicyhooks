@@ -1,10 +1,10 @@
-# SpicyHooks
+# SpicyHooks 🌶️
 
 A collection of spicy React hooks
 
 ## Installation
 
-```bash
+```sh
 npm install spicyhooks
 # or
 yarn add spicyhooks
@@ -15,15 +15,90 @@ bun add spicyhooks
 
 ## Available Hooks
 
+### useCounter
+
+A custom React hook for managing a counter state.
+
+#### Usage
+
+```tsx
+import { useCounter } from 'spicyhooks';
+
+function MyCounterComponent() {
+  const { count, increment, decrement, reset } = useCounter(5);
+
+  return (
+    <section>
+      <h2>Counter</h2>
+      <p>Current Count: {count}</p>
+      <button onClick={increment}>+</button>
+      <button onClick={decrement}>-</button>
+      <button onClick={reset}>Reset to 5</button>
+    </section>
+  );
+}
+```
+
+### usePrevious
+
+A custom React hook that returns the value of a variable from the previous render cycle.
+
+#### Usage
+
+```tsx
+import { usePrevious } from 'spicyhooks';
+
+function Counter() {
+  const [count, setCount] = useState(0);
+
+  const prevCount = usePrevious(count);
+
+  return (
+    <section>
+      <button onClick={() => setCount((prev) => prev + 1)}>+</button>
+      <p>prev:{prevCount}</p>
+      <p>current: {count}</p>
+    </section>
+  );
+}
+```
+
+### useToggle
+
+A custom React hook for managing a boolean (on/off) toggle state.
+
+```tsx
+import { useToggle } from 'spicyhooks';
+
+  function ModalExample() {
+  const { isOn: isModalOpen, toggle: toggleModal, setOff: closeModal } = useToggle(false);
+
+  return (
+  <section>
+  <button onClick={toggleModal}>Open Modal</button>
+
+  {isModalOpen && (
+  <div className="modal-backdrop">
+  <div className="modal-content">
+  <p>This is the modal content!</p>
+  <button onClick={closeModal}>Close</button> {* Using setOff *}
+  </div>
+  </div>
+  )}
+  </section>
+  );
+  }
+```
+
 ### useInViewElement
 
-A hook that detects when an element is in the viewport.
+Custom React hook that tracks which element is currently intersecting the viewport
+using the IntersectionObserver API.
 
 #### Usage
 
 ```tsx
 import { useInViewElement } from 'spicyhooks';
-// Other imports
 
 const MyComponent = () => {
   const inViewElement = useInViewElement();
@@ -68,95 +143,25 @@ useInViewElement({
 
 ### useScreenSize
 
-A hook that gives you the current screen size and automatically updates when the window is resized.
+A custom React hook that tracks the current inner dimensions (width and height) of the browser window.
 
 #### Usage
 
 ```tsx
 import { useScreenSize } from 'spicyhooks';
 
-function MyComponent() {
-  const { screenWidth, screenHeight } = useScreenSize();
+function ResponsiveLayout() {
+  const { width, height } = useScreenSize();
+
+  const isSmallScreen = width < 600;
 
   return (
-    <section>
-      <p>Current screen width: {screenWidth}px</p>
-      <p>Current screen height: {screenHeight}px</p>
-
-      {screenWidth < 768 ? <p>Mobile view</p> : <p>Desktop view</p>}
-    </section>
+    <div>
+      <p>
+        Current window size: {width}px x {height}px
+      </p>
+      <p>{isSmallScreen && 'Mobile'}</p>
+    </div>
   );
 }
-```
-
-### useLocalStorage
-
-A hook that provides a convenient way to store and retrieve data from localStorage with TypeScript support.
-
-#### Usage
-
-```tsx
-import { useLocalStorage } from 'spicyhooks';
-
-function MyComponent() {
-  const [theme, setTheme, removeTheme] = useLocalStorage<string>(
-    'theme',
-    'light'
-  ); // this is just an example
-
-  return (
-    <section>
-      <h2>Current theme: {theme}</h2>
-      <button onClick={() => setTheme('dark')}>Set Dark Theme</button>
-      <button onClick={() => setTheme('light')}>Set Light Theme</button>
-      <button onClick={removeTheme}>Reset Theme</button>
-    </section>
-  );
-}
-```
-
-#### Parameters
-
-The `useLocalStorage` hook accepts two parameters:
-
-```tsx
-useLocalStorage<T>(key: string, initialValue: T | null)
-```
-
-- `key`: The key under which the value will be stored in localStorage
-- `initialValue`: The initial value to use if no value exists in localStorage
-
-#### Return Value
-
-The hook returns a tuple with three elements:
-
-1. `item`: The current value (can be null)
-2. `setValue`: Function to update the stored value
-3. `removeItem`: Function to remove the item from localStorage
-
-#### Type Safety
-
-The hook is fully typed and supports generic types:
-
-```tsx
-// Example with a custom type
-interface UserPreferences {
-  theme: 'light' | 'dark';
-  fontSize: number;
-}
-
-const [preferences, setPreferences, removePreferences] =
-  useLocalStorage<UserPreferences>('preferences', {
-    theme: 'light',
-    fontSize: 16,
-  });
-```
-
-```
-
-This documentation:
-1. Explains what the hook does
-2. Shows practical usage examples
-3. Details the parameters and return values
-4. Includes type safety information
 ```
