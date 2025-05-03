@@ -24,7 +24,7 @@ A custom React hook for managing a counter state.
 ```tsx
 import { useCounter } from 'spicyhooks';
 
-function MyCounterComponent() {
+function CounterExample() {
   const { count, increment, decrement, reset } = useCounter(5);
 
   return (
@@ -39,6 +39,28 @@ function MyCounterComponent() {
 }
 ```
 
+### useDebounce
+
+A custom React hook that debounces a value.
+
+#### Usage
+
+```tsx
+function DebounceExample() {
+  const [count, setCount] = useState(0);
+
+  const debounceCount = useDebounce(count, 3000);
+
+  return (
+    <section>
+      <button onClick={() => setCount((prev) => prev + 1)}>+</button>
+      <p>Instant Count: {count}</p>
+      <p>Debounced Count: {debounceCount}</p>
+    </section>
+  );
+}
+```
+
 ### usePrevious
 
 A custom React hook that returns the value of a variable from the previous render cycle.
@@ -48,7 +70,7 @@ A custom React hook that returns the value of a variable from the previous rende
 ```tsx
 import { usePrevious } from 'spicyhooks';
 
-function Counter() {
+function PreviousExample() {
   const [count, setCount] = useState(0);
 
   const prevCount = usePrevious(count);
@@ -70,7 +92,7 @@ A custom React hook for managing a boolean (on/off) toggle state.
 ```tsx
 import { useToggle } from 'spicyhooks';
 
-  function ModalExample() {
+  function ToggleExample() {
   const { isOn: isModalOpen, toggle: toggleModal, setOff: closeModal } = useToggle(false);
 
   return (
@@ -100,7 +122,7 @@ using the IntersectionObserver API.
 ```tsx
 import { useInViewElement } from 'spicyhooks';
 
-const MyComponent = () => {
+const InViewElementExample = () => {
   const inViewElement = useInViewElement();
 
   return (
@@ -150,7 +172,7 @@ A custom React hook that tracks the current inner dimensions (width and height) 
 ```tsx
 import { useScreenSize } from 'spicyhooks';
 
-function ResponsiveLayout() {
+function ScreenSizeExample() {
   const { width, height } = useScreenSize();
 
   const isSmallScreen = width < 600;
@@ -164,4 +186,8 @@ function ResponsiveLayout() {
     </div>
   );
 }
+```
+
+```
+
 ```
