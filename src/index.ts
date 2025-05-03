@@ -3,3 +3,4 @@ export { useScreenSize } from './hooks/screen-size/screen-size';
 export { useCounter } from './hooks/counter/counter';
 export { usePrevious } from './hooks/previous/previous';
 export { useToggle } from './hooks/toggle/toggle';
+export { useDebounce } from './hooks/debounce/debounce';
